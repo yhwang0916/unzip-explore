@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:adsmogo="http://www.adsmogo.com"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:id="@+id/main_layout"
+    tools:context=".MainActivity" 
+    android:background="#F1F1D9"
+    >
+
+    <RelativeLayout
+        android:id = "@+id/main_option"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="@drawable/gradient"
+        >
+      <ImageButton android:layout_width="35dip"
+    android:layout_height="35dip"
+    android:src="@drawable/setting"
+    android:scaleType="centerInside"
+    android:id="@+id/setting"
+    android:layout_marginLeft="5dip"
+    android:layout_marginRight="5dip"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    android:padding="5dip"
+    android:background="@drawable/button_bg_selector"
+    />
+	<TextView
+	    android:id="@+id/current_dir"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:textColor="#ffffff"
+	    android:textSize="18sp"
+	    android:hint="无SD卡"
+	    android:textStyle="bold"
+	    android:singleLine="true"
+    	android:ellipsize="start"
+	    android:layout_marginRight="60dip"
+	    android:layout_centerVertical="true"
+	    android:layout_toRightOf="@id/setting"
+	    />
+	
+    <ImageView android:layout_width="50dip"
+    android:layout_height="35dip"
+    android:id="@+id/back"
+    android:src="@drawable/back"
+    android:scaleType="centerInside"
+    android:layout_marginRight="5dip"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:padding="0dip"
+    android:background="@drawable/button_bg_selector"
+    />
+
+
+    </RelativeLayout>
+<com.fmw.unzip.service.DragListView 
+     android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+     android:fastScrollEnabled="true" 
+        android:focusable="true"
+    android:id="@+id/listView"
+    android:layout_gravity="center"
+    android:padding="5dip"
+    android:layout_below="@id/main_option"
+    
+    ></com.fmw.unzip.service.DragListView>
+<ImageView android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/list_empty"
+    android:scaleType="centerInside"></ImageView>
+
+<LinearLayout 
+     android:id="@+id/option"
+     android:layout_width="fill_parent"
+    android:layout_height="50dip"
+    android:orientation="horizontal"
+    android:background="#D6D6D6"
+    android:paddingTop="5dip"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_vertical"
+    android:visibility="invisible">
+    <Button android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="粘贴"
+    android:layout_weight="1"
+    android:id="@+id/paste"/>
+    <Button android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="取消"
+    android:layout_weight="1"
+    android:id="@+id/cancel_paste"
+    />
+</LinearLayout>
+
+</RelativeLayout>

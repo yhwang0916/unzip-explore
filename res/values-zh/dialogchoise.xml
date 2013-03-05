@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dialogchoiser">
+        <item
+            >文本</item>
+        <item
+            >图像</item>
+        <item
+            >声音</item>
+        <item
+            >视频</item>
+    </string-array>
+</resources>

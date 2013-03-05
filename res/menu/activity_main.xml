@@ -1,0 +1,37 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<group android:id="@+id/group_main">
+   
+    <item android:id="@+id/sort" 
+             android:icon="@drawable/sort"
+         android:titleCondensed="排序">
+         <menu>
+             <item android:id="@+id/sort_name"
+                 android:title="按名称排序"/>
+             <item android:id="@+id/sort_size"
+                 android:title="按大小排序"/>
+             <item android:id="@+id/sort_time"
+                 android:title="按时间排序"/>
+             <item android:id="@+id/sort_type"
+                 android:title="按类型排序"/>
+         </menu>
+    </item> 
+     <item android:id="@+id/new_fold"
+         android:icon="@drawable/newfold"
+         android:titleCondensed="新建文件夹"
+               />
+     <item android:id="@+id/new_file"
+         android:icon="@drawable/newfile"
+                android:titleCondensed="新建文件"/>
+     <item android:id="@+id/show_hide"
+         android:icon="@drawable/showhide"
+                android:titleCondensed="显示隐藏"/>
+    <item android:id="@+id/refresh" 
+        android:icon="@drawable/refresh"
+            android:titleCondensed="刷新" />
+    <item android:id="@+id/exit"
+        android:icon="@drawable/exit"
+                android:titleCondensed="退出"/>
+</group>
+
+</menu>
