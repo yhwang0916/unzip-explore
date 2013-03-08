@@ -33,7 +33,7 @@
 	    android:layout_height="wrap_content"
 	    android:textColor="#ffffff"
 	    android:textSize="18sp"
-	    android:hint="无SD卡"
+	    android:hint="SD卡不可用"
 	    android:textStyle="bold"
 	    android:singleLine="true"
     	android:ellipsize="start"

@@ -169,7 +169,7 @@ public class MainActivity extends Activity {
 		settingButton.setOnClickListener(new ButtonClickListener());
 		current_dirView.setOnClickListener(new ButtonClickListener());
 		//settingButton.setOnTouchListener(new ButtonTouchListener());
-		if(Environment.getExternalStorageState().equals(Environment.MEDIA_REMOVED)){
+		if(!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
 			ImageView listEmpty = (ImageView)(findViewById(R.id.list_empty));
 			listEmpty.setImageResource(R.drawable.nosdcard);
 			listEmpty.setAlpha(30);
@@ -203,14 +203,8 @@ public class MainActivity extends Activity {
 		listView = (ListView)findViewById(R.id.listView);
 		listView.setBackgroundDrawable(null);
 		dataList = new ArrayList<HashMap<String,Object>>();
-		HashMap<String, Object> item = new HashMap<String, Object>();
-		item.put("item_icon", "icon");
-		item.put("item_name", "filename");
-		item.put("item_size", "filesize");
-		dataList.add(item);
 		//获取指定路径list
 		MyAdapter adapter =null;
-		new Tools(context);
 		dataList = Tools.getFileList(file,showHide,context);
 		if(dataList==null|| dataList.isEmpty()){
 			List<HashMap<String, Object>> datalList2 = new ArrayList<HashMap<String,Object>>();
@@ -219,6 +213,7 @@ public class MainActivity extends Activity {
 			datalList2.add(item2);
 			
 			MyAdapter adapter2 = new MyAdapter(context, datalList2, R.layout.emptyitem, new String[]{"bg_img"}, new int[]{R.id.item_empty});
+			
 			listView.setAdapter(adapter2);
 			ImageView listEmpty = (ImageView)(findViewById(R.id.list_empty));
 			listEmpty.setImageResource(R.drawable.bg_empty);
@@ -490,11 +485,12 @@ public class MainActivity extends Activity {
 				return false;
 			}
 			file = file.getParentFile();
-			//用bundler给主进程传递参数
-			pathView.setText(Tools.shortPath(file.getAbsolutePath()));
+			
 			Message msg = new Message();
 			msg.getData().putString("path", file.getAbsolutePath());
 			handler.sendMessage(msg);
+			//用bundler给主进程传递参数
+			pathView.setText(Tools.shortPath(file.getAbsolutePath()));
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
@@ -537,11 +533,11 @@ public class MainActivity extends Activity {
 					}
 					
 					file = file.getParentFile();
-					//用bundler给主进程传递参数
-					pathView.setText(Tools.shortPath(file.getAbsolutePath()));
 					Message msg = new Message();
 					msg.getData().putString("path", file.getAbsolutePath());
 					handler.sendMessage(msg);
+					//用bundler给主进程传递参数
+					pathView.setText(Tools.shortPath(file.getAbsolutePath()));
 				break;
 			case R.id.paste:
 				optionLinearLayout.setVisibility(View.GONE);

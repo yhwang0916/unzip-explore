@@ -2,7 +2,9 @@ package com.fmw.unzip;
 
 
 import com.box.unzip.R;
+import com.fmw.unzip.tools.Tools;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.common.Log;
 import com.umeng.fb.UMFeedbackService;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
@@ -14,6 +16,9 @@ import android.app.Dialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -137,12 +142,17 @@ public class SettingActivity extends Activity {
 		AlertDialog.Builder builder = new Builder(context);
 		switch (id) {
 		case DIALOG_ABOUT:
-			  builder.setTitle("解压文件管路 V1.2.1");
+			  String versioninfo = "";
+			  if(new Tools(context).getVersionName()!=null){
+				  versioninfo =new Tools(context).getVersionName();
+			  }
+			  builder.setTitle("解压文件管路 v"+versioninfo);
 			  TextView textView = new TextView(context);
 			  textView.setText("一款稳定、快速、高效的android解压工具，支持zip、rar、tar压缩格式，解压中文无乱码，集成文件管理功能，支持文件的复制、剪切、删除、重命名等常用文件管理功能。如果您在使用过程中遇到任何问题,请在\"用户反馈\"中反馈您的信息,让我们做的更好！\r\n\r\n联系作者 ：fmw530@163.com");
 			  textView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT));
 			  builder.setView(textView);
-			 
+			  
+		
 			break;
 		
 		case DIALOG_HELP:
@@ -177,4 +187,6 @@ public class SettingActivity extends Activity {
 		super.onResume();
 		MobclickAgent.onResume(this);
 	}
+	
+	
 }

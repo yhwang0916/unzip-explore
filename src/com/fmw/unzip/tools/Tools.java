@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
@@ -405,4 +406,19 @@ public class Tools {
 	        return appInfo.loadIcon(pm);  
 	  
 	    } 
+		
+		public static String getVersionName()
+		   {
+		        try {
+					// 获取packagemanager的实例
+					   PackageManager packageManager = context.getPackageManager();
+					   // getPackageName()是你当前类的包名，0代表是获取版本信息
+					   PackageInfo packInfo = packageManager.getPackageInfo(context.getPackageName(),0);
+					   String version = packInfo.versionName;
+					   return version;
+				} catch (NameNotFoundException e) {
+					Log.e("eee", "版本号获取错误");
+				}
+		        return null;
+		   }
 }
